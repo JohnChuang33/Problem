@@ -1,7 +1,6 @@
 package com.example.support;
 
 import com.example.entity.Department;
-import net.openhft.compiler.CompilerUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.context.event.ApplicationReadyEvent;
@@ -29,7 +28,7 @@ public class RepositoryGeneratorListener {
             try {
                 ClassLoader classLoader = Thread.currentThread().getContextClassLoader();
                 logger.info("using classloader: {}", classLoader);
-                CompilerUtils.CACHED_COMPILER.loadFromJava(classLoader, className, javaCode);
+                CompilerUtils.loadFromJava(classLoader, className, javaCode);
                 System.out.println(Class.forName("com.example.repository.DepartmentRepository"));
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
